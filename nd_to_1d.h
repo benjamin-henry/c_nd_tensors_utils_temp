@@ -19,12 +19,10 @@ int nd_to_1d_idx(unsigned int dims, unsigned int* shape, unsigned int* idxs) {
     */
     
     unsigned int* reversed = (unsigned int*)(malloc(sizeof(unsigned int) * dims-1));
-    if(dims > 0) {
-        if(dims < 2) {
-            reversed[0] = 1;
-        }
+    if(dims < 2) {
+        reversed[0] = 1;
     }    
-    
+
     unsigned int* prod_accu = (unsigned int*)(malloc(sizeof(unsigned int) * dims-1));
     prod_accu[0]=1;
 
