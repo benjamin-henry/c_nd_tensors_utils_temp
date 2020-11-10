@@ -20,8 +20,8 @@ int nd_to_1d_idx(unsigned int dims, unsigned int* shape, unsigned int* idxs) {
     */
      
 
-    unsigned int* prod_accu = (unsigned int*)(malloc(sizeof(unsigned int) * dims-1));
-    prod_accu[t->dims-1] = 1;
+    unsigned int* prod_accu = (unsigned int*)(malloc(sizeof(unsigned int) * dims));
+    prod_accu[dims-1] = 1;
     prod_accu[0] = 1;
 
     for(int i=dims-1; i>0; --i) {
@@ -32,7 +32,7 @@ int nd_to_1d_idx(unsigned int dims, unsigned int* shape, unsigned int* idxs) {
     for(int i=0; i<dims; ++i) {
         index_1d += prod_accu[dims-i-1] * idxs[i];
     }
-    
+
     free(prod_accu);
     return index_1d;
 }
