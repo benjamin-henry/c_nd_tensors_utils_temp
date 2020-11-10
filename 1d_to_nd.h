@@ -13,7 +13,7 @@ unsigned int 1d_to_nd_idx(unsigned int dims, unsigned int* shape, unsigned int 1
     /*
     How to use:
 
-        unsigned int* nd_idx = 1d_to_nd_idx(4,(unsigned int[]){2,8,8,3},(unsigned int[]){0,1,2,1});
+        unsigned int* nd_idx = 1d_to_nd_idx(4,(unsigned int[]){2,8,8,3},31);
 
     OR
 
