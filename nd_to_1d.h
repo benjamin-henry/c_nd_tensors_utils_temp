@@ -2,7 +2,8 @@
 
 int nd_to_1d_idx(unsigned int dims, unsigned int* shape, unsigned int* idxs) {
     // https://stackoverflow.com/questions/29142417/4d-position-from-1d-index
-
+    // Index = xn ( D1 * ... * D{n-1} ) + x{n-1} ( D1 * ... * D{n-2} ) + ... + x2 * D1 + x1
+    
     /*
     How to use:
 
@@ -17,29 +18,22 @@ int nd_to_1d_idx(unsigned int dims, unsigned int* shape, unsigned int* idxs) {
 
     BOTH will return 31
     */
-    
-    unsigned int* reversed = (unsigned int*)(malloc(sizeof(unsigned int) * dims-1));
-    if(dims < 2) {
-        reversed[0] = 1;
-    }    
+     
 
     unsigned int* prod_accu = (unsigned int*)(malloc(sizeof(unsigned int) * dims-1));
-    prod_accu[0]=1;
+    prod_accu[t->dims-1] = 1;
+    prod_accu[0] = 1;
 
     for(int i=dims-1; i>0; --i) {
-        prod_accu[dims-i]=1;
-        prod_accu[dims-i]=prod_accu[dims-i-1] * shape[i];
+        prod_accu[dims-i] = prod_accu[dims-i-1] * shape[i];
     }
 
-    for(int i=0; i<dims; ++i) {
-        reversed[i] = prod_accu[dims-i-1];
-    }
-    free(prod_accu);
     unsigned int index_1d = 0;
     for(int i=0; i<dims; ++i) {
-        index_1d += reversed[i] * idxs[i];
+        index_1d += prod_accu[dims-i-1] * idxs[i];
     }
-    free(reversed);
+    
+    free(prod_accu);
     return index_1d;
 }
 
