@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-int nd_to_1d_idx(unsigned int dims, unsigned int* shape, unsigned int* idxs) {
+unsigned int nd_to_1d_idx(unsigned int dims, unsigned int* shape, unsigned int* nd_idx) {
     // https://stackoverflow.com/questions/29142417/4d-position-from-1d-index
     // Index = xn ( D1 * ... * D{n-1} ) + x{n-1} ( D1 * ... * D{n-2} ) + ... + x2 * D1 + x1
     
@@ -30,7 +30,7 @@ int nd_to_1d_idx(unsigned int dims, unsigned int* shape, unsigned int* idxs) {
 
     unsigned int index_1d = 0;
     for(int i=0; i<dims; ++i) {
-        index_1d += prod_accu[dims-i-1] * idxs[i];
+        index_1d += prod_accu[dims-i-1] * nd_idx[i];
     }
 
     free(prod_accu);
