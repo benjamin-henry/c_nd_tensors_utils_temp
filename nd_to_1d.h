@@ -11,12 +11,19 @@ int nd_to_1d_idx(unsigned int dims, unsigned int* shape, unsigned int* idxs) {
     OR
 
         unsigned int dims = 4,
-        unsigned int shape = {2,8,8,3};
-        unsigned int nd_idx = {0,1,2,1};
+        unsigned int shape[dims] = {2,8,8,3};
+        unsigned int nd_idx[dims] = {0,1,2,1};
         unsigned int index = nd_to_1d_idx(dims, shape, nd_idx); 
 
     BOTH will return 31
     */
+    
+    unsigned int* reversed = (unsigned int*)(malloc(sizeof(unsigned int) * dims-1));
+    if(dims > 0) {
+        if(dims < 2) {
+            reversed[0] = 1;
+        }
+    }    
     
     unsigned int* prod_accu = (unsigned int*)(malloc(sizeof(unsigned int) * dims-1));
     prod_accu[0]=1;
@@ -26,7 +33,6 @@ int nd_to_1d_idx(unsigned int dims, unsigned int* shape, unsigned int* idxs) {
         prod_accu[dims-i]=prod_accu[dims-i-1] * shape[i];
     }
 
-    unsigned int* reversed = (unsigned int*)(malloc(sizeof(unsigned int) * dims-1));
     for(int i=0; i<dims; ++i) {
         reversed[i] = prod_accu[dims-i-1];
     }
