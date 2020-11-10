@@ -36,7 +36,7 @@ int nd_to_1d_idx(unsigned int dims, unsigned int* shape, unsigned int* idxs) {
     }
     free(prod_accu);
     unsigned int index_1d = 0;
-    for(int i=0; i<t->dims; ++i) {
+    for(int i=0; i<dims; ++i) {
         index_1d += reversed[i] * idxs[i];
     }
     free(reversed);
