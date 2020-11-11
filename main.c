@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main()
-{
+#include "index_conversion.h"
+
+int main() {
     unsigned int dims = 4;
     unsigned int shape[] = {2,8,8,3};
     unsigned int nd_idxs[] = {0,2,5,1};

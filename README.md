@@ -6,6 +6,8 @@ example:
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "index_conversion.h"
+
 int main() {
     unsigned int dims = 4;
     unsigned int shape[] = {2,8,8,3};
@@ -26,5 +28,11 @@ int main() {
 
     return 0;
 }
+
+/*
+Console output:
+    64
+    0, 2, 5, 1,
+*/
 
 ```
