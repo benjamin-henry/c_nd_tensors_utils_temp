@@ -1,12 +1,8 @@
-C language -> Index Conversion between 1-D and N_D arrays  
-
-example:
-
-```c
 #include <stdio.h>
 #include <stdlib.h>
 
-int main() {
+int main()
+{
     unsigned int dims = 4;
     unsigned int shape[] = {2,8,8,3};
     unsigned int nd_idxs[] = {0,2,5,1};
@@ -26,5 +22,3 @@ int main() {
 
     return 0;
 }
-
-```
