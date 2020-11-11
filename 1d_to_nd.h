@@ -43,7 +43,6 @@ unsigned int 1d_to_nd_idx(unsigned int dims, unsigned int* shape, unsigned int 1
     unsigned int * reversed = (unsigned int *)(malloc(sizeof(unsigned int) * dims));
     for(int i=0;i<dims;++i) {
         reversed[i] = idxs[dims-1-i];
-        printf("%i%s", reversed[i], "\n");
     }
     free(idxs);
     return reversed;
